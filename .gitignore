@@ -475,3 +475,10 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# SQLite working files
+*.db-shm
+*.db-wal
+
+# Prevent inadvertently publicly revealing sensitive prod settings/configs
+API/appsettings.json
