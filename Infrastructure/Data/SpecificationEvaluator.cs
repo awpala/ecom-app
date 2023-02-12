@@ -25,6 +25,12 @@ namespace Infrastructure.Data
         query = query.OrderByDescending(spec.OrderByDescending);
       }
 
+      // N.B. ordering is important -- paging should occur AFTER filtering and sorting
+      if (spec.IsPagingEnabled)
+      {
+        query = query.Skip(spec.Skip).Take(spec.Take);
+      }
+
       query = spec.Includes.Aggregate(query, (current, include) => current.Include(include));
 
       return query;
