@@ -6,10 +6,13 @@ import { ShopComponent } from './shop.component';
 
 @NgModule({
   declarations: [
-    ShopComponent
+    ShopComponent,
   ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+  ],
+  exports: [
+    ShopComponent,
+  ],
 })
-export class ShopModule { }
+export class ShopModule {}
