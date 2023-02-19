@@ -22,10 +22,14 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error) {
-          const { status, error: { message } } = error;
+          const { status, error: { message, errors } } = error;
 
           if (status === 400) {
-            this.toastr.error(message, status.toString());
+            if (errors) {
+              throw error.error;
+            } else {
+              this.toastr.error(message, status.toString());
+            }
           }
           if (status === 401) {
             this.toastr.error(message, status.toString());
