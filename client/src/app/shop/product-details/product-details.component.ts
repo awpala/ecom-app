@@ -16,7 +16,10 @@ export class ProductDetailsComponent implements OnInit {
     private shopService: ShopService,
     private activatedRoute: ActivatedRoute,
     private bcService: BreadcrumbService,
-  ) {}
+  ) {
+    // reset prior to loading data
+    bcService.set('@productDetails', ' ');
+  }
 
   ngOnInit(): void {
     this.loadProduct();
