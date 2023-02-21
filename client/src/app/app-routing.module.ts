@@ -13,6 +13,11 @@ const routes: Routes = [
     // implement lazy loading of module `ShopModule`
     loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule),
   },
+  {
+    path: 'basket',
+    // implement lazy loading of module `BasketModule`
+    loadChildren: () => import('./basket/basket.module').then(m => m.BasketModule),
+  },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
