@@ -18,6 +18,11 @@ const routes: Routes = [
     // implement lazy loading of module `BasketModule`
     loadChildren: () => import('./basket/basket.module').then(m => m.BasketModule),
   },
+  {
+    path: 'checkout',
+    // implement lazy loading of module `CheckoutModule`
+    loadChildren: () => import('./checkout/checkout.module').then(m => m.CheckoutModule),
+  },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
