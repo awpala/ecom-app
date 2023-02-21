@@ -4,6 +4,7 @@
   </div>
   <ng-container *ngIf="(basketService.basketSource$ | async) as basket">
     <div class="container">
+      <!-- line-items table -->
       <div class="row">
         <div class="table-responsive">
           <table class="table">
@@ -63,6 +64,17 @@
               </tr>
             </tbody>
           </table>
+        </div>
+      </div>
+      <!-- Order Summary -->
+      <div class="row">
+        <div class="col-6 offset-6">
+          <app-order-totals></app-order-totals>
+          <div class="d-grid">
+            <a routerLink="/checkout" class="btn btn-outline-primary py-2">
+              Proceed to checkout
+            </a>
+          </div>
         </div>
       </div>
     </div>
