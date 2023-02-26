@@ -1,0 +1,19 @@
+{
+  "sqltools.useNodeRuntime": true,
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "identity",
+      "group": "ecom-app",
+      "database": "${workspaceFolder:ecom-app}/API/identity.db"
+    },
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "ecom-app",
+      "group": "ecom-app",
+      "database": "${workspaceFolder:ecom-app}/API/ecom-app.db"
+    }
+  ]
+}
