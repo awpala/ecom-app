@@ -7,7 +7,7 @@ using StackExchange.Redis;
 
 namespace API.Extensions
 {
-  public static class ApplicationServicesExtentions
+  public static class ApplicationServicesExtensions
   {
     public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
     {
