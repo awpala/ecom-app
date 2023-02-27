@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { debounceTime, finalize, map, switchMap, take } from 'rxjs';
 import { AccountService } from '../account.service';
 
 @Component({
@@ -22,7 +23,7 @@ export class RegisterComponent {
 
   registerForm = this.fb.group({
     displayName: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]],
+    email: ['', [Validators.required, Validators.email], [this.validateEmailNotTaken()]],
     password: ['', [Validators.required, Validators.pattern(this.complexPassword)]],
   });
 
@@ -33,5 +34,22 @@ export class RegisterComponent {
         next: () => this.router.navigateByUrl('/shop'),
         error: (error) => this.errors = error.errors,
       });
+  }
+
+  validateEmailNotTaken(): AsyncValidatorFn {
+    return (control: AbstractControl) => (
+      control.valueChanges.pipe(
+        debounceTime(500), // debounce API calls to async validator by 0.5s
+        take(1), // take the most recent result (i.e., on user typing of field `email`)
+        switchMap(() => (
+          this.accountService
+          .checkEmailExists(control.value)
+          .pipe(
+            map((result) => result ? { emailExists: true } : null),
+            finalize(() => control.markAsTouched()),
+          )
+        )),
+      )
+    );
   }
 }
