@@ -5,6 +5,7 @@ import { PagingHeaderComponent } from './paging-header/paging-header.component';
 import { PagerComponent } from './pager/pager.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { OrderTotalsComponent } from './order-totals/order-totals.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { OrderTotalsComponent } from './order-totals/order-totals.component';
     CommonModule,
     PaginationModule.forRoot(), // N.B. method `forRoot()` loads `PaginationModule` as a singleton, to be used throughout the app (i.e., only one instance is required)
     CarouselModule.forRoot(),
+    ReactiveFormsModule,
   ],
   exports: [
     PaginationModule,
@@ -23,6 +25,7 @@ import { OrderTotalsComponent } from './order-totals/order-totals.component';
     PagerComponent,
     CarouselModule,
     OrderTotalsComponent,
+    ReactiveFormsModule,
   ],
 })
 export class SharedModule {}

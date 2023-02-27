@@ -1,16 +1,31 @@
 <div class="d-flex justify-content-center mt-5">
   <div class="col-3">
-    <form>
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmit()"
+    >
       <div class="text-center mb-4">
         <h1 class="mb-3">Login</h1>
       </div>
       <!-- reference: https://getbootstrap.com/docs/5.3/forms/floating-labels -->
       <div class="form-floating mb-3">
-        <input type="email" class="form-control" id="floatingInput" placeholder="Email">
+        <input
+          type="email"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Email"
+          formControlName="email"
+        >
         <label for="floatingInput">Email address</label>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+        <input
+          type="password"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="Password"
+          formControlName="password"
+        >
         <label for="floatingPassword">Password</label>
       </div>
       <div class="d-grid">
