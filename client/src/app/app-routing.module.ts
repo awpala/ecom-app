@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './core/guards/auth.guard';
 import { NotFoundComponent } from './core/not-found/not-found.component';
 import { ServerErrorComponent } from './core/server-error/server-error.component';
 import { HomeComponent } from './home/home.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'checkout',
+    canActivate: [AuthGuard],
     // implement lazy loading of module `CheckoutModule`
     loadChildren: () => import('./checkout/checkout.module').then(m => m.CheckoutModule),
   },
