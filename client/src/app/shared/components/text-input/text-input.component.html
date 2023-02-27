@@ -20,4 +20,10 @@
   >
     Invalid email address
   </div>
+  <div
+    *ngIf="control.errors?.['pattern']"
+    class="invalid-feedback"
+  >
+    Password must be more complex
+  </div>
 </div>
