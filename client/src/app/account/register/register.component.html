@@ -23,6 +23,11 @@
         [type]="'password'"
       >
       </app-text-input>
+      <ul *ngIf="errors" class="text-danger list-unstyled">
+        <li *ngFor="let error of errors">
+          {{error}}
+        </li>
+      </ul>
       <div class="d-grid">
         <button
           [disabled]="registerForm.invalid"
